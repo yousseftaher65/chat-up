@@ -36,6 +36,41 @@ class AppStrings {
   static const String privacyPolicy = "Privacy Policy";
   static const String alreadyHaveAccount = "Already have an account?";
   static const String joinPeers = "Join 40k+ online peers";
-  static const String joinPeersSubtext = "Instant real-time chat & media sharing";
-  static const String accountCreatedSuccessfully = "Account created successfully";
+  static const String joinPeersSubtext =
+      "Instant real-time chat & media sharing";
+  static const String accountCreatedSuccessfully =
+      "Account created successfully";
+  static const String resetPassword = "Reset Password";
+  static const String resetPasswordSubtext =
+      "Enter your email address and we'll send you a 4-digit code to reset your password.";
+  static const String registeredEmail = "Registered Email";
+  static const String secure = "Secure";
+  static const String send = "Send";
+  static const String enterCode = "Enter 4-Digit Verification Code";
+  static const String didntReceiveCode = "Didn't receive code? ";
+  static const String resend = "Resend";
+  static const String forYourProtection =
+      "For your protection, never share this single-use passcode with anyone. ChatUp support will never ask for your verification code.";
+  static const String verifyAndContinue = "Verify & Continue";
+  static const String passwordResetSuccessfully = "Password reset successfully";
+  static const String enterNewPassword = "Enter New Password";
+  static const String createNewPassword = "Create New Password";
+  static const String createNewPasswordSubtext =
+      "Your new password must be unique and different from previously used passwords.";
+  static const String newPassword = "New Password";
+  static const String passwordStrength = "Password Strength";
+  static const String passwordStrengthSubtext = "At least 8 characters";
+  static const String passwordStrengthSubtext2 =
+      "Includes at least one number or symbol";
+  static const String passwordStrengthSubtext3 =
+      "Mix of uppercase and lowercase letters";
+  static const String confirmPassword = "Confirm Password";
+  static const String passwordsDoNotMatch = "Passwords do not match";
+  static const String neverSharePassword =
+      "Never share your password or verification codes with anyone, including ChatUp support.";
+  static const String cancelAndReturn = "Cancel & Return to Login";
+  static const String updatePassword = "Update Password";
+  static const String passwordResetComplete = "Password Reset Complete!";
+  static const String passwordResetCompleteSubtext = "Your password has been successfully updated. You can now use your new password to sign into your ChatUp account.";
+  static const String done = "Back to Login";
 }

@@ -1,6 +1,8 @@
+import 'package:chat_up/core/routes/page_route_name.dart';
 import 'package:chat_up/features/auth/login/view/widgets/email_field_widget.dart';
 import 'package:chat_up/features/auth/login/view/widgets/password_field_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../../core/app_ui/app_ui.dart';
 
 class LoginFormWidget extends StatefulWidget {
@@ -32,10 +34,13 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
         gapH16,
         Align(
           alignment: Alignment.centerRight,
-          child: Text(
-            AppStrings.forgotPassword,
-            style: context.bodyMedium?.copyWith(
-              color: AppColors.color2F628D,
+          child: Tappable.faded(
+            onTap: () {
+              context.pushNamed(PageRouteName.forgotPassword);
+            },
+            child: Text(
+              AppStrings.forgotPassword,
+              style: context.bodyMedium?.copyWith(color: AppColors.color2F628D),
             ),
           ),
         ),

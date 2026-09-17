@@ -16,15 +16,23 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:google_sign_in/google_sign_in.dart' as _i116;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../features/auth/forgot_password/data/datasources/forgot_password_remote_data_source.dart'
+    as _i837;
+import '../../features/auth/forgot_password/data/repo/forgot_password_repo_impl.dart'
+    as _i877;
+import '../../features/auth/forgot_password/view/cubit/forgot_passowrd_cubit.dart'
+    as _i429;
+import '../../features/auth/forgot_password/view/repo/forgot_password_repo.dart'
+    as _i974;
 import '../../features/auth/login/data/datasources/login_remote_data_source.dart'
     as _i743;
 import '../../features/auth/login/data/repo/login_repo_impl.dart' as _i1001;
 import '../../features/auth/login/view/cubit/login_cubit.dart' as _i14;
 import '../../features/auth/login/view/repo/login_repo.dart' as _i407;
 import '../../features/auth/shared/data/datasources/auth_local_data_source.dart'
-    as _i41;
+    as _i342;
 import '../../features/auth/shared/data/datasources/auth_remote_database.dart'
-    as _i994;
+    as _i256;
 import '../../features/auth/signup/data/datasources/signup_remote_data_source.dart'
     as _i336;
 import '../../features/auth/signup/data/repo/signup_repo_impl.dart' as _i767;
@@ -54,6 +62,14 @@ extension GetItInjectableX on _i174.GetIt {
         googleSignIn: gh<_i116.GoogleSignIn>(),
       ),
     );
+    gh.factory<_i837.ForgotPasswordRemoteDataSource>(
+      () => _i837.ForgotPasswordRemoteDataSourceImpl(),
+    );
+    gh.factory<_i974.ForgotPasswordRepo>(
+      () => _i877.ForgotPasswordRepoImpl(
+        remoteDataSource: gh<_i837.ForgotPasswordRemoteDataSource>(),
+      ),
+    );
     gh.singleton<_i717.CacheService>(() => _i717.CacheServiceImpl());
     gh.factory<_i905.RemoteDatabaseService>(
       () => _i905.RemoteDatabaseServiceImpl(gh<_i974.FirebaseFirestore>()),
@@ -64,28 +80,33 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i743.LoginRemoteDataSource>(
       () => _i743.RemoteDataSourceImpl(gh<_i578.RemoteAuthService>()),
     );
-    gh.factory<_i41.AuthLocalDataSource>(
-      () => _i41.LoginLocalDataSourceImpl(gh<_i717.CacheService>()),
+    gh.factory<_i256.AuthRemoteDatabase>(
+      () => _i256.AuthRemoteDatabaseImpl(gh<_i905.RemoteDatabaseService>()),
     );
-    gh.factory<_i994.AuthRemoteDatabase>(
-      () => _i994.AuthRemoteDatabaseImpl(gh<_i905.RemoteDatabaseService>()),
+    gh.factory<_i429.ForgotPasswordCubit>(
+      () => _i429.ForgotPasswordCubit(
+        forgotPasswordRepo: gh<_i974.ForgotPasswordRepo>(),
+      ),
+    );
+    gh.factory<_i342.AuthLocalDataSource>(
+      () => _i342.LoginLocalDataSourceImpl(gh<_i717.CacheService>()),
     );
     gh.factory<_i407.LoginRepo>(
       () => _i1001.LoginRepoImpl(
         remoteDataSource: gh<_i743.LoginRemoteDataSource>(),
-        localDataSource: gh<_i41.AuthLocalDataSource>(),
-        authRemoteDatabase: gh<_i994.AuthRemoteDatabase>(),
-      ),
-    );
-    gh.factory<_i72.SignupRepo>(
-      () => _i767.SignupRepoImpl(
-        remoteDataSource: gh<_i336.SignupRemoteDataSource>(),
-        authRemoteDatabase: gh<_i994.AuthRemoteDatabase>(),
-        authlocalDataSource: gh<_i41.AuthLocalDataSource>(),
+        localDataSource: gh<_i342.AuthLocalDataSource>(),
+        authRemoteDatabase: gh<_i256.AuthRemoteDatabase>(),
       ),
     );
     gh.factory<_i14.LoginCubit>(
       () => _i14.LoginCubit(loginRepo: gh<_i407.LoginRepo>()),
+    );
+    gh.factory<_i72.SignupRepo>(
+      () => _i767.SignupRepoImpl(
+        remoteDataSource: gh<_i336.SignupRemoteDataSource>(),
+        authRemoteDatabase: gh<_i256.AuthRemoteDatabase>(),
+        authlocalDataSource: gh<_i342.AuthLocalDataSource>(),
+      ),
     );
     gh.factory<_i625.SignupCubit>(
       () => _i625.SignupCubit(signupRepo: gh<_i72.SignupRepo>()),
