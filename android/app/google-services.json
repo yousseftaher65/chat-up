@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "503244172423",
+    "project_id": "chatup-ffde3",
+    "storage_bucket": "chatup-ffde3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503244172423:android:3509dae58e489a0fd59c22",
+        "android_client_info": {
+          "package_name": "com.example.chat_up"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503244172423-j5rqqr78pcntm4icmn0b13b7m3ktjq7g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chat_up",
+            "certificate_hash": "09de443451cb5da20536c0a6f98d93c580578ed0"
+          }
+        },
+        {
+          "client_id": "503244172423-po9mm2d6edjl2k44uuke3vlpjteblva1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBSIo31KeCeUXNewyX4LmcxAScXUsdjs4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503244172423-po9mm2d6edjl2k44uuke3vlpjteblva1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "503244172423-jmg4vj2604c3iqnf7o81sleg0jvmne9q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chatUp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
