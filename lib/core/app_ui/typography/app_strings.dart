@@ -42,7 +42,7 @@ class AppStrings {
       "Account created successfully";
   static const String resetPassword = "Reset Password";
   static const String resetPasswordSubtext =
-      "Enter your email address and we'll send you a 4-digit code to reset your password.";
+      "Enter your email address and we'll send you a link to reset your password.";
   static const String registeredEmail = "Registered Email";
   static const String secure = "Secure";
   static const String send = "Send";
@@ -71,6 +71,12 @@ class AppStrings {
   static const String cancelAndReturn = "Cancel & Return to Login";
   static const String updatePassword = "Update Password";
   static const String passwordResetComplete = "Password Reset Complete!";
-  static const String passwordResetCompleteSubtext = "Your password has been successfully updated. You can now use your new password to sign into your ChatUp account.";
+  static const String passwordResetCompleteSubtext =
+      "Your password has been successfully updated. You can now use your new password to sign into your ChatUp account.";
   static const String done = "Back to Login";
+  static const String verifyNewPassword = "Verify New Password";
+  static const String resetPasswordSuccessMessage =
+      "Reset link sent! Please check your email.";
+  static const String changePasswordSuccessMessage = "Password updated! Please log in.";
+  static const String enterConfirmPassword = "Enter Confirm Password";
 }

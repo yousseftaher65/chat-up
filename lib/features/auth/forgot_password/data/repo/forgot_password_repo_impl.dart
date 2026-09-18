@@ -9,14 +9,7 @@ class ForgotPasswordRepoImpl implements ForgotPasswordRepo {
 
   ForgotPasswordRepoImpl({required this.remoteDataSource});
   @override
-  Future<void> forgotPassword(String email) {
-    // TODO: implement forgotPassword
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> sendCode(String digitCode) {
-    // TODO: implement sendCode
-    throw UnimplementedError();
+  Future<void> sendPasswordResetEmail(String email) {
+    return remoteDataSource.sendPasswordResetEmail(email);
   }
 }

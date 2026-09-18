@@ -83,3 +83,6 @@ flutter_gen:
 
   integrations:
     flutter_svg: true
+
+dependency_overrides:
+  firebase_core_web: ^3.12.0

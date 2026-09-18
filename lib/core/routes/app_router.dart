@@ -1,5 +1,6 @@
 import 'package:chat_up/core/di/service_locator.dart';
 import 'package:chat_up/core/routes/page_route_name.dart';
+import 'package:chat_up/features/auth/forgot_password/reset_password/view/pages/reset_password_page.dart';
 import 'package:chat_up/features/auth/forgot_password/view/pages/forgot_password_page.dart';
 import 'package:chat_up/features/auth/shared/data/datasources/auth_local_data_source.dart';
 import 'package:chat_up/features/auth/shared/data/models/user_model.dart';
@@ -45,6 +46,30 @@ class AppRouter {
           state: state,
           child: const ForgotPasswordPage(),
         ),
+      ),
+      GoRoute(
+        path: PageRouteName.firebaseAuthAction,
+        name: PageRouteName.firebaseAuthAction,
+        pageBuilder: (context, state) {
+          final oobCode = state.uri.queryParameters['oobCode'];
+
+          return getFadeTransitionPage(
+            state: state,
+            child: ResetPasswordPage(key: ValueKey(oobCode), oobCode: oobCode),
+          );
+        },
+      ),
+      GoRoute(
+        path: PageRouteName.resetPassword,
+        name: PageRouteName.resetPassword,
+        pageBuilder: (context, state) {
+          final oobCode = state.uri.queryParameters['oobCode'];
+
+          return getFadeTransitionPage(
+            state: state,
+            child: ResetPasswordPage(key: ValueKey(oobCode), oobCode: oobCode),
+          );
+        },
       ),
       GoRoute(
         path: PageRouteName.home,

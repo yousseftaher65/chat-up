@@ -16,6 +16,14 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:google_sign_in/google_sign_in.dart' as _i116;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../features/auth/forgot_password/reset_password/data/datasources/reset_password_remote_data_source.dart'
+    as _i862;
+import '../../features/auth/forgot_password/reset_password/data/repo/reset_password_repo_impl.dart'
+    as _i119;
+import '../../features/auth/forgot_password/reset_password/view/cubit/reset_password_cubit.dart'
+    as _i292;
+import '../../features/auth/forgot_password/reset_password/view/repo/reset_password_repo.dart'
+    as _i506;
 import '../../features/auth/forgot_password/data/datasources/forgot_password_remote_data_source.dart'
     as _i837;
 import '../../features/auth/forgot_password/data/repo/forgot_password_repo_impl.dart'
@@ -62,17 +70,14 @@ extension GetItInjectableX on _i174.GetIt {
         googleSignIn: gh<_i116.GoogleSignIn>(),
       ),
     );
-    gh.factory<_i837.ForgotPasswordRemoteDataSource>(
-      () => _i837.ForgotPasswordRemoteDataSourceImpl(),
-    );
-    gh.factory<_i974.ForgotPasswordRepo>(
-      () => _i877.ForgotPasswordRepoImpl(
-        remoteDataSource: gh<_i837.ForgotPasswordRemoteDataSource>(),
-      ),
-    );
     gh.singleton<_i717.CacheService>(() => _i717.CacheServiceImpl());
     gh.factory<_i905.RemoteDatabaseService>(
       () => _i905.RemoteDatabaseServiceImpl(gh<_i974.FirebaseFirestore>()),
+    );
+    gh.factory<_i862.ResetPasswordRemoteDataSource>(
+      () => _i862.ResetPasswordRemoteDataSourceImpl(
+        gh<_i578.RemoteAuthService>(),
+      ),
     );
     gh.factory<_i336.SignupRemoteDataSource>(
       () => _i336.RemoteDataSourceImpl(gh<_i578.RemoteAuthService>()),
@@ -80,16 +85,31 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i743.LoginRemoteDataSource>(
       () => _i743.RemoteDataSourceImpl(gh<_i578.RemoteAuthService>()),
     );
+    gh.factory<_i506.ResetPasswordRepo>(
+      () => _i119.ResetPasswordRepoImpl(
+        resetPasswordDataSource: gh<_i862.ResetPasswordRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i256.AuthRemoteDatabase>(
       () => _i256.AuthRemoteDatabaseImpl(gh<_i905.RemoteDatabaseService>()),
     );
-    gh.factory<_i429.ForgotPasswordCubit>(
-      () => _i429.ForgotPasswordCubit(
-        forgotPasswordRepo: gh<_i974.ForgotPasswordRepo>(),
+    gh.factory<_i837.ForgotPasswordRemoteDataSource>(
+      () => _i837.ForgotPasswordRemoteDataSourceImpl(
+        gh<_i578.RemoteAuthService>(),
+      ),
+    );
+    gh.factory<_i974.ForgotPasswordRepo>(
+      () => _i877.ForgotPasswordRepoImpl(
+        remoteDataSource: gh<_i837.ForgotPasswordRemoteDataSource>(),
       ),
     );
     gh.factory<_i342.AuthLocalDataSource>(
       () => _i342.LoginLocalDataSourceImpl(gh<_i717.CacheService>()),
+    );
+    gh.factory<_i292.ResetPasswordCubit>(
+      () => _i292.ResetPasswordCubit(
+        resetPasswordRepo: gh<_i506.ResetPasswordRepo>(),
+      ),
     );
     gh.factory<_i407.LoginRepo>(
       () => _i1001.LoginRepoImpl(
@@ -106,6 +126,11 @@ extension GetItInjectableX on _i174.GetIt {
         remoteDataSource: gh<_i336.SignupRemoteDataSource>(),
         authRemoteDatabase: gh<_i256.AuthRemoteDatabase>(),
         authlocalDataSource: gh<_i342.AuthLocalDataSource>(),
+      ),
+    );
+    gh.factory<_i429.ForgotPasswordCubit>(
+      () => _i429.ForgotPasswordCubit(
+        forgotPasswordRepo: gh<_i974.ForgotPasswordRepo>(),
       ),
     );
     gh.factory<_i625.SignupCubit>(

@@ -11,8 +11,14 @@ abstract class RemoteAuthService {
     required String password,
     required String fullname,
   });
+  Future<void> sendPasswordResetEmail(String email);
 
   Future<void> logout();
+
+  Future<void> completePasswordReset({
+    required String oobCode,
+    required String newPassword,
+  });
 }
 
 @Injectable(as: RemoteAuthService)
@@ -93,6 +99,32 @@ class RemoteAuthServiceImpl implements RemoteAuthService {
     final userAdapter = FirebaseAuthUserAdapter();
 
     return userAdapter.adapt(_firebaseAuth.currentUser!);
+  }
+
+  @override
+  Future<void> sendPasswordResetEmail(String email) async {
+    await _firebaseAuth.sendPasswordResetEmail(
+      email: email,
+      actionCodeSettings: firebase_auth.ActionCodeSettings(
+        url: 'https://chatup-ffde3.web.app/reset-password',
+        handleCodeInApp: true,
+        androidPackageName: 'com.example.chat_up',
+        androidInstallApp: true,
+        androidMinimumVersion: '12',
+        iOSBundleId: 'com.example.chatUp',
+      ),
+    );
+  }
+
+  @override
+  Future<void> completePasswordReset({
+    required String oobCode,
+    required String newPassword,
+  }) async {
+    await _firebaseAuth.confirmPasswordReset(
+      code: oobCode,
+      newPassword: newPassword,
+    );
   }
 }
 
