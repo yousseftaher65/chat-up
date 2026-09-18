@@ -49,6 +49,10 @@ class $AssetsImagesGen {
   SvgGenImage get joinPeersImg =>
       const SvgGenImage('assets/images/join_peers_img.svg');
 
+  /// File path: assets/images/password_reset_completed_img.svg
+  SvgGenImage get passwordResetCompletedImg =>
+      const SvgGenImage('assets/images/password_reset_completed_img.svg');
+
   /// File path: assets/images/peers_stack_img.svg
   SvgGenImage get peersStackImg =>
       const SvgGenImage('assets/images/peers_stack_img.svg');
@@ -56,6 +60,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/person_img.png
   AssetGenImage get personImg =>
       const AssetGenImage('assets/images/person_img.png');
+
+  /// File path: assets/images/reset_password_img.svg
+  SvgGenImage get resetPasswordImg =>
+      const SvgGenImage('assets/images/reset_password_img.svg');
 
   /// File path: assets/images/splash_img.svg
   SvgGenImage get splashImg =>
@@ -68,8 +76,10 @@ class $AssetsImagesGen {
     chatUpImg,
     dotImg,
     joinPeersImg,
+    passwordResetCompletedImg,
     peersStackImg,
     personImg,
+    resetPasswordImg,
     splashImg,
   ];
 }
